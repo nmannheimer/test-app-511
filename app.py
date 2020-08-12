@@ -4,7 +4,9 @@ import dash_html_components as html
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets,requests_pathname_prefix="/heads/")
+app.url_base_pathname = "/heads/"
+app.routes_pathname_prefix = app.url_base_pathname
 
 server = app.server
 
