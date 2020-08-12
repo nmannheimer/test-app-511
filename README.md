@@ -1,3 +1,2 @@
-# A Gentle Introduction to Developing and Deploying Dash via Heroku
-This Git repo accompanies the tutorial article on Medium  
-This branch provides the boilerplate for a Heroku-deployable Dash app
+# dash_heroku_deployment
+For a full tutorial on how to deploy your app, go right here: https://towardsdatascience.com/how-to-deploy-your-dash-app-with-heroku-a4ecd25a6205
