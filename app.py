@@ -24,9 +24,10 @@ fig = px.histogram(cars, x='Origin', y='MPG',
 fig2 = px.scatter(cars, x="MPG", y="Weight", color="Origin", size='Horsepower')
 
 fig3 = px.parallel_coordinates(cars,
-                              color='Origin_col',
+                              color='MPG',
                               color_continuous_scale=px.colors.diverging.Tealrose,
-                              color_continuous_midpoint=2)
+                              color_continuous_midpoint=25)
+fig4 = px.box(cars, x='Model', y='MPG', color='Origin')
 
 app.layout = html.Div(children=[
     html.H1(children='Automobile Exploration'),
@@ -34,23 +35,38 @@ app.layout = html.Div(children=[
     html.Div(children='''
         Understand Key Performance Trends in the Cars Dataset
     '''),
+    html.Div([
+        dcc.Graph(
+            id='bar-chart',
+            figure=fig
+        ),
+        dcc.Graph(
+            id='scatter-plot',
+            figure=fig2
+        ),
+    ], style={'display': 'inline-block', 'width': '49%'}),
+    html.Div([
+        dcc.Graph(
+            id='box',
+            figure=fig4
+        ),
+        dcc.Graph(
+            id='parallel-coordinates',
+            figure=fig3
+        ),
 
-    dcc.Graph(
-        id='example-graph',
-        figure=fig
-    ),
-    dcc.Graph(
-        id='example-graph2',
-        figure=fig2
-    ),
-    dcc.Graph(
-        id='example-graph3',
-        figure=fig3
-    )
+    ], style={'width': '49%', 'display': 'inline-block'})
 ])
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+
+
+
+
+
+
+
 
 
 
