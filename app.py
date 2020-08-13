@@ -15,9 +15,13 @@ cars = pd.read_csv("original cars.csv", sep=";")
 colors = {'US':1, 'Europe':2, 'Japan':3}
 cars['Origin_col'] = [colors[i] for i in cars['Origin']]
 
-fig = px.bar(cars, x='Origin', y='MPG', color='Origin')
+fig = px.histogram(cars, x='Origin', y='MPG',
+                   color='Origin',
+                   histfunc='avg',
+                   range_y=[0,60],
+                   animation_frame='Model')
 
-fig2 = px.scatter(cars, x="MPG", y="Weight", color="Origin")
+fig2 = px.scatter(cars, x="MPG", y="Weight", color="Origin", size='Horsepower')
 
 fig3 = px.parallel_coordinates(cars,
                               color='Origin_col',
@@ -47,6 +51,13 @@ app.layout = html.Div(children=[
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+
+
+
+
+
+
+
 
 
 
